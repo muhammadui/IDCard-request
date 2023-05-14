@@ -3,8 +3,7 @@ import axios from "axios";
 
 import "./Home.css";
 import facultiesData from "./faculties.json";
-import infinityChallengeLogo from "./n1-whte.svg";
-import infinityChallengeLogoDefault from "./n1.svg";
+import IDCard from "./IDCard.svg";
 
 const Home = () => {
   const [faculty, setFaculty] = useState("");
@@ -69,11 +68,6 @@ const Home = () => {
       <main>
         <div className="regstration__wrapper">
           <div className="left__reg__col">
-            <div className="animation__container">
-              <div className="infinity__logo">
-                <img src={infinityChallengeLogo} alt="" srcSet="" />
-              </div>
-            </div>
             <div className="animation__title ">
               <p className="challenge__title">
                 Request your <br /> School ID Card <br /> instantly!
@@ -81,6 +75,11 @@ const Home = () => {
             </div>
             <div className="animation__subtitle">
               <p>Enjoy convenient Access to School facilities & services</p>
+            </div>
+            <div className="animation__container">
+              <div className="infinity__logo">
+                <img src={IDCard} alt="" srcSet="" />
+              </div>
             </div>
           </div>
           <div className="right__reg__col">
@@ -91,7 +90,7 @@ const Home = () => {
                 </h1>
 
                 <div className="infinity__logo">
-                  <img src={infinityChallengeLogoDefault} alt="" srcSet="" />
+                  <img src={IDCard} alt="" srcSet="" />
                 </div>
                 <h3 className="challenge__subtitile">
                   Enjoy convenient Access to School facilities & services
@@ -100,16 +99,19 @@ const Home = () => {
             </div>
             <div className="registration__form">
               <form onSubmit={handleSubmit} className="registration__form">
-                <p className="register__form">Register for the Challenge</p>
+                <p className="register__form">Fill the form below</p>
+                <p className="payment__notification">
+                  Note that, you’ll be charge ₦1500 for processing fee
+                </p>
 
                 <div className="email__container">
-                  <label htmlFor="fullname">Team Name</label>
+                  <label htmlFor="fullname">Full Name</label>
                   <input
                     type="text"
                     name="fullname"
                     id="fullname"
                     required
-                    placeholder="John"
+                    placeholder="Muhammad Ahmad"
                     value={fullname}
                     onChange={(e) => setFullname(e.target.value)}
                   />
@@ -206,7 +208,7 @@ const Home = () => {
                   </select>
                 </label>
                 <br />
-                <button type="submit">Register</button>
+                <button type="submit">Request ID</button>
               </form>
             </div>
           </div>

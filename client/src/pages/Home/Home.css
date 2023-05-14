@@ -170,7 +170,7 @@ form button {
   margin-bottom: 0;
 }
 button {
-  background: linear-gradient(to right, #e33e3a, #f1973d);
+  background: #1cbed0;
   font-size: 1.2rem;
   font-weight: 500;
   font-family: "ABCWhyte-Medium";
@@ -192,7 +192,7 @@ button {
     line-height: 2.8rem;
     font-size: 2.8rem;
     letter-spacing: normal;
-    background: linear-gradient(to right, #e33e3a, #f1973d);
+    background: #333333;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
