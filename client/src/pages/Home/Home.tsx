@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Home.css";
 import facultiesData from "./faculties.json";
 import IDCard from "./IDCard.svg";
+import IDCardWithShadow from "./IDCardWithShadow.svg";
 
 const Home = () => {
   const [faculty, setFaculty] = useState("");
@@ -85,13 +86,13 @@ const Home = () => {
           <div className="right__reg__col">
             <div className="registration__hero__title__subtitle">
               <div className="registration__title">
+                <div className="infinity__logo">
+                  <img src={IDCardWithShadow} alt="" srcSet="" />
+                </div>
                 <h1>
                   Request your <br /> School ID Card <br /> instantly!
                 </h1>
 
-                <div className="infinity__logo">
-                  <img src={IDCard} alt="" srcSet="" />
-                </div>
                 <h3 className="challenge__subtitile">
                   Enjoy convenient Access to School facilities & services
                 </h3>
