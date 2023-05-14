@@ -1,0 +1,49 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+@font-face {
+  font-family: "ABCWhyte-Black";
+  src: url("/fonts/ABCWhyte-Black-Trial.woff2") format("woff2");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "ABCWhyte-Bold";
+  src: url("/fonts/ABCWhyte-Bold-Trial.woff2") format("woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "ABCWhyte-Heavy";
+  src: url("/fonts/ABCWhyte-Heavy-Trial.woff2") format("woff2");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "ABCWhyte-Medium";
+  src: url("/fonts/ABCWhyte-Medium-Trial.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "ABCWhyte-Regular";
+  src: url("/fonts/ABCWhyte-Regular-Trial.woff2") format("woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "ABCWhyte-Super";
+  src: url("/fonts/ABCWhyte-Super-Trial.woff2") format("woff2");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "ABCWhyte-Thin";
+  src: url("/fonts/ABCWhyte-Thin-Trial.woff2") format("woff2");
+  font-weight: 100;
+}

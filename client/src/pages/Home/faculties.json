@@ -1,0 +1,218 @@
+{
+  "faculties": [
+    {
+      "name": "Agriculture And Agricultural Technology",
+      "departments": [
+        {
+          "name": "Agricultural Economics",
+          "courses": ["PHYS101", "PHYS201", "PHYS301"]
+        },
+        {
+          "name": "Agricultural Extension and Rural Development",
+          "courses": ["CHEM101", "CHEM201", "CHEM301"]
+        },
+        {
+          "name": "Animal Production",
+          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+        },
+        {
+          "name": "Crop Production",
+          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+        },
+        {
+          "name": "Fisheries and Aquaculture",
+          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+        },
+        {
+          "name": "Soil Science",
+          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+        }
+      ]
+    },
+    {
+      "name": "Engineering and Engineering Technology",
+      "departments": [
+        {
+          "name": "Agricultural And Bioresource Engineering",
+          "courses": [
+            "Crop Processing and Storage Engineering",
+            "Farm Power and Machinery",
+            "Farm Structures and Environmental Control",
+            "Food Engineering / Postharvest Technology",
+            "Soil and Water Engineering"
+          ]
+        },
+        {
+          "name": "Automotive Engineering",
+          "courses": ["Automobile Engineering"]
+        },
+        {
+          "name": "Chemical Engineering",
+          "courses": ["Chemical Engineering"]
+        },
+        {
+          "name": "Civil Engineering",
+          "courses": ["Civil Engineering"]
+        },
+        {
+          "name": "Computer & Communications Engineering",
+          "courses": ["Computer & Communications Engineering"]
+        },
+        {
+          "name": "Electrical/Electronics Engineering",
+          "courses": ["Electrical/Electronics Engineering"]
+        },
+        {
+          "name": "Mechanical/Production Engineering",
+          "courses": ["Mechanical/Production Engineering"]
+        },
+        {
+          "name": "Mechatronics and Systems Engineering",
+          "courses": [
+            "Mechatronics Engineering",
+            "Systems Engineering",
+            "Control Engineering"
+          ]
+        },
+        {
+          "name": "Petroleum Engineering",
+          "courses": ["Petroleum Engineering"]
+        }
+      ]
+    },
+    {
+      "name": "Environmental Technology",
+      "departments": [
+        {
+          "name": "Architecture",
+          "courses": ["Architecture"]
+        },
+        {
+          "name": "Building",
+          "courses": ["Building"]
+        },
+        {
+          "name": "Environmental Management Technology",
+          "courses": ["Environmental Management Technology"]
+        },
+        {
+          "name": "Estate Management and Valuation",
+          "courses": ["Estate Management and Valuation"]
+        },
+        {
+          "name": "Industrial Design",
+          "courses": ["Industrial Design"]
+        },
+        {
+          "name": "Quantity Surveying",
+          "courses": ["Quantity Surveying"]
+        },
+        {
+          "name": "Surveying & Geo-Informatics",
+          "courses": ["Surveying & Geo-Informatics"]
+        },
+        {
+          "name": "Urban & Regional Planning",
+          "courses": ["Urban & Regional Planning"]
+        }
+      ]
+    },
+    {
+      "name": "Management Sciences",
+      "departments": [
+        {
+          "name": "Accounting and Finance Technology",
+          "courses": ["Accounting and Finance Technology"]
+        },
+        {
+          "name": "Banking & Finance Technology",
+          "courses": ["Banking & Finance Technology"]
+        },
+        {
+          "name": "Business Management",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "General Studies",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+
+        {
+          "name": "Management and Information Technology",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Technopreneurship",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        }
+      ]
+    },
+    {
+      "name": "Medical Sciences",
+      "departments": [
+        {
+          "name": "College of Medicine",
+          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+        }
+      ]
+    },
+    {
+      "name": "Science",
+      "departments": [
+        {
+          "name": "Applied Geology",
+          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+        },
+        {
+          "name": "Biochemistry",
+          "courses": ["MECH101", "MECH201", "MECH301"]
+        },
+        {
+          "name": "Biological Sciences",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Chemistry",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Ecology",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Mathematical Sciences",
+          "courses": ["Computer Science", "Mathematics", "Statistics"]
+        },
+        {
+          "name": "Microbiology",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Physics",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        }
+      ]
+    },
+    {
+      "name": "Technology Education",
+      "departments": [
+        {
+          "name": "Education Foundation",
+          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+        },
+        {
+          "name": "Library and Information Science",
+          "courses": ["MECH101", "MECH201", "MECH301"]
+        },
+        {
+          "name": "Science Education",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        },
+        {
+          "name": "Vocational & Technology Education",
+          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+        }
+      ]
+    }
+  ]
+}
