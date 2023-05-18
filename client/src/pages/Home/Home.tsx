@@ -7,6 +7,7 @@ import IDCard from "./IDCard.svg";
 import IDCardWithShadow from "./IDCardWithShadow.svg";
 
 const Home = () => {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [faculty, setFaculty] = useState("");
   const [department, setDepartment] = useState("");
   const [courses, setCourses] = useState<string[]>([]);
@@ -24,6 +25,7 @@ const Home = () => {
     setFaculty(event.target.value);
     setDepartment("");
     setCourses([]);
+    setIsFormSubmitted(false); // Reset the isFormSubmitted variable
   };
 
   const handleDepartmentChange = (
@@ -35,32 +37,57 @@ const Home = () => {
     );
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsFormSubmitted(true);
+  };
+  const paymentURL = import.meta.env.VITE_PAYMENT_URL;
+  // const handlePayment = async () => {
+  //   // Send payment request to payment gateway
+  //   const paymentResponse = await axios.post(`${paymentURL}`, {
+  //     amount: 1500,
+  //     email,
+  //     mobile,
+  //     // other required fields
+  //   });
 
+  //   if (paymentResponse.data.status === "success") {
+  //     // Send data to server to store in database
+  //     const response = await axios.post("http://localhost:3000/api/save-data", {
+  //       fullname,
+  //       email,
+  //       mobile,
+  //       reg_number,
+  //       faculty,
+  //       department,
+  //       courses,
+  //     });
+
+  //     // Show success message or redirect to a success page
+  //   } else {
+  //     // Show error message
+  //   }
+  // };
+
+  const handlePayment = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/students", {
-        fullname,
+      const paymentResponse = await axios.post(`${paymentURL}`, {
+        amount: 1500,
         email,
         mobile,
-        reg_number,
-        faculty,
-        department,
-        courses,
+        // other required fields
       });
 
-      alert(response.data.message);
-      console.log(response.data);
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          console.log(error.response.data.message);
-        } else {
-          console.log("Network error");
-        }
+      if (paymentResponse.data.status === "success") {
+        // Redirect to the payment page
+        window.location.href = paymentResponse.data.data.link;
       } else {
-        console.log("Unknown error occurred");
+        // Show error message
+        console.error("Payment request failed");
       }
+    } catch (error) {
+      // Handle error
+      console.error(error);
     }
   };
 
@@ -75,7 +102,7 @@ const Home = () => {
               </p>
             </div>
             <div className="animation__subtitle">
-              <p>Enjoy convenient Access to School facilities & services</p>
+              <p>Enjoy convenient access to school facilities & services</p>
             </div>
             <div className="animation__container">
               <div className="infinity__logo">
@@ -94,12 +121,12 @@ const Home = () => {
                 </h1>
 
                 <h3 className="challenge__subtitile">
-                  Enjoy convenient Access to School facilities & services
+                  Enjoy convenient access to school facilities & services
                 </h3>
               </div>
             </div>
             <div className="registration__form">
-              <form onSubmit={handleSubmit} className="registration__form">
+              <form className="registration__form " onSubmit={handleSubmit}>
                 <p className="register__form">Fill the form below</p>
                 <p className="payment__notification">
                   Note that, you’ll be charge ₦1500 for processing fee
@@ -172,7 +199,7 @@ const Home = () => {
 
                 <br />
                 <label>
-                  Department:
+                  Department
                   <select value={department} onChange={handleDepartmentChange}>
                     <option value="">Select a department</option>
 
@@ -189,7 +216,7 @@ const Home = () => {
                 </label>
                 <br />
                 <label>
-                  Courses:
+                  Course Option
                   <select
                     value={courses}
                     onChange={(e) =>
@@ -209,7 +236,10 @@ const Home = () => {
                   </select>
                 </label>
                 <br />
-                <button type="submit">Request ID</button>
+
+                <button onClick={handlePayment}>Request ID</button>
+
+                {/* <button type="submit">Request ID</button> */}
               </form>
             </div>
           </div>

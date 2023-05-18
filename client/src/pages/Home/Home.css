@@ -175,6 +175,8 @@ button {
   font-weight: 500;
   font-family: "ABCWhyte-Medium";
 }
+
+/* mobie css  */
 @media screen and (max-width: 600px) {
   .left__reg__col {
     display: none;
@@ -192,11 +194,9 @@ button {
     line-height: 2.8rem;
     font-size: 2.8rem;
     letter-spacing: normal;
-    background: #333333;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: 900;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    letter-spacing: 0.8px;
     font-family: "ABCWhyte-Black";
     line-height: 2.4rem;
   }
