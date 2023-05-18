@@ -14,7 +14,7 @@ app.use(
 app.use(express.json());
 
 // Payment endpoint
-
+/*
 app.post("/api/payment", async (req, res) => {
   try {
     await axios
@@ -47,6 +47,14 @@ app.post("/api/payment", async (req, res) => {
     console.log(err);
     // console.log(err);
   }
+});
+*/
+
+app.post("/api/payment", async (req, res) => {
+  res.status(200).send({
+    status: "Okay",
+    message: "Send Successfully",
+  });
 });
 
 // Save data endpoint

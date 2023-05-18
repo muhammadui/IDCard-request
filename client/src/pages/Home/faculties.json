@@ -5,27 +5,27 @@
       "departments": [
         {
           "name": "Agricultural Economics",
-          "courses": ["PHYS101", "PHYS201", "PHYS301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Agricultural Extension and Rural Development",
-          "courses": ["CHEM101", "CHEM201", "CHEM301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Animal Production",
-          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Crop Production",
-          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Fisheries and Aquaculture",
-          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Soil Science",
-          "courses": ["BIOL101", "BIOL201", "BIOL301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         }
       ]
     },
@@ -130,20 +130,20 @@
         },
         {
           "name": "Business Management",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "General Studies",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
 
         {
           "name": "Management and Information Technology",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Technopreneurship",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         }
       ]
     },
@@ -152,7 +152,7 @@
       "departments": [
         {
           "name": "College of Medicine",
-          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         }
       ]
     },
@@ -161,23 +161,23 @@
       "departments": [
         {
           "name": "Applied Geology",
-          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Biochemistry",
-          "courses": ["MECH101", "MECH201", "MECH301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Biological Sciences",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Chemistry",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Ecology",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Mathematical Sciences",
@@ -185,11 +185,11 @@
         },
         {
           "name": "Microbiology",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Physics",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         }
       ]
     },
@@ -198,19 +198,19 @@
       "departments": [
         {
           "name": "Education Foundation",
-          "courses": ["CVEN101", "CVEN201", "CVEN301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Library and Information Science",
-          "courses": ["MECH101", "MECH201", "MECH301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Science Education",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         },
         {
           "name": "Vocational & Technology Education",
-          "courses": ["ELEC101", "ELEC201", "ELEC301"]
+          "courses": ["Option 1", "Option 2", "Option 3"]
         }
       ]
     }

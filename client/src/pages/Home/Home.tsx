@@ -39,7 +39,7 @@ const Home = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsFormSubmitted(true);
+    // setIsFormSubmitted(true);
   };
   const paymentURL = import.meta.env.VITE_PAYMENT_URL;
   // const handlePayment = async () => {
@@ -237,9 +237,11 @@ const Home = () => {
                 </label>
                 <br />
 
-                <button onClick={handlePayment}>Request ID</button>
+                {/* <button onClick={handlePayment}>Request ID</button> */}
 
-                {/* <button type="submit">Request ID</button> */}
+                <button onClick={handlePayment} type="submit">
+                  Request ID
+                </button>
               </form>
             </div>
           </div>
