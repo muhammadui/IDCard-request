@@ -1,18 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 import "./Home.css";
 import facultiesData from "./faculties.json";
 import IDCard from "./IDCard.svg";
 import IDCardWithShadow from "./IDCardWithShadow.svg";
-const paymentURL = import.meta.env.VITE_PAYMENT_URL;
-const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-const title = import.meta.env.VITE_PAYMENT_URL;
-const amount = import.meta.env.VITE_AMOUNT;
-const description = import.meta.env.VITE_PAYMENT_URL;
 
 const Home = () => {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [faculty, setFaculty] = useState("");
   const [department, setDepartment] = useState("");
   const [courses, setCourses] = useState<string[]>([]);
@@ -20,7 +15,6 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [reg_number, setRegNumber] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const faculties = facultiesData.faculties;
   const departments = faculty
@@ -31,6 +25,7 @@ const Home = () => {
     setFaculty(event.target.value);
     setDepartment("");
     setCourses([]);
+    setIsFormSubmitted(false); // Reset the isFormSubmitted variable
   };
 
   const handleDepartmentChange = (
@@ -44,46 +39,57 @@ const Home = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // setIsFormSubmitted(true);
+  };
+  const paymentURL = import.meta.env.VITE_PAYMENT_URL;
+  // const handlePayment = async () => {
+  //   // Send payment request to payment gateway
+  //   const paymentResponse = await axios.post(`${paymentURL}`, {
+  //     amount: 1500,
+  //     email,
+  //     mobile,
+  //     // other required fields
+  //   });
 
-    // Check if required fields are filled
-    if (
-      fullname &&
-      email &&
-      mobile &&
-      reg_number &&
-      faculty &&
-      department &&
-      courses.length > 0
-    ) {
-      // All required fields are filled
-      setFormSubmitted(true);
-    } else {
-      // Display an error or alert message indicating that the form fields are incomplete
-      console.log("Please fill in all required fields");
+  //   if (paymentResponse.data.status === "success") {
+  //     // Send data to server to store in database
+  //     const response = await axios.post("http://localhost:3000/api/save-data", {
+  //       fullname,
+  //       email,
+  //       mobile,
+  //       reg_number,
+  //       faculty,
+  //       department,
+  //       courses,
+  //     });
+
+  //     // Show success message or redirect to a success page
+  //   } else {
+  //     // Show error message
+  //   }
+  // };
+
+  const handlePayment = async () => {
+    try {
+      const paymentResponse = await axios.post(`${paymentURL}`, {
+        amount: 1500,
+        email,
+        mobile,
+        // other required fields
+      });
+
+      if (paymentResponse.data.status === "success") {
+        // Redirect to the payment page
+        window.location.href = paymentResponse.data.data.link;
+      } else {
+        // Show error message
+        console.error("Payment request failed");
+      }
+    } catch (error) {
+      // Handle error
+      console.error(error);
     }
   };
-
-  const config = {
-    public_key: publicKey,
-    tx_ref: Date.now().toString(),
-    amount: amount,
-    currency: "NGN",
-    payment_options: "card,mobilemoney,ussd",
-    customer: {
-      email: email,
-      phone_number: mobile,
-      name: fullname,
-    },
-    redirect_url: "https://atbu.edu.ng/web/front",
-
-    customizations: {
-      title: "ID Card Request",
-      description: "ID Card Processing Fee",
-      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
-    },
-  };
-
-  const handleFlutterPayment = useFlutterwave(config);
 
   return (
     <>
@@ -232,22 +238,9 @@ const Home = () => {
                 </label>
                 <br />
 
-                <button
-                  onClick={() => {
-                    if (formSubmitted) {
-                      handleFlutterPayment({
-                        callback: (response) => {
-                          console.log(response);
-                          closePaymentModal(); // this will close the modal programmatically
-                        },
-                        onClose: () => {},
-                      });
-                    } else {
-                      console.log("Please fill in all required fields");
-                    }
-                  }}
-                  type="submit"
-                >
+                {/* <button onClick={handlePayment}>Request ID</button> */}
+
+                <button onClick={handlePayment} type="submit">
                   Request ID
                 </button>
               </form>
