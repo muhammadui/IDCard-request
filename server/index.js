@@ -2,6 +2,7 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const morgan = require("morgan");
 
 const app = express();
 app.use(
@@ -11,9 +12,13 @@ app.use(
 );
 // Parse incoming request JSON data
 app.use(express.json());
+app.use(express.static("public"));
+// Views setup
+app.set("view engine", "ejs");
+app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
-  res.status(200).json({ "App Status": "Server is connected and working" });
+  res.render("index");
 });
 
 // Payment endpoint
@@ -78,7 +83,9 @@ app.post("/api/save-data", async (req, res) => {
     });
   }
 });
-
+app.get("*", (req, res) => {
+  res.render("404");
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT} + ${process.env.FLW_SECRET_KEY}`);
