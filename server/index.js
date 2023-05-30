@@ -12,14 +12,18 @@ app.use(
 // Parse incoming request JSON data
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({ "App Status": "Server is connected and working" });
+});
+
 // Payment endpoint
 app.post("/api/payment", async (req, res) => {
   try {
     const paymentData = {
-      tx_ref: "hooli-tx-1920bbytty",
+      tx_ref: Date.now().toString(),
       amount: 1500,
       currency: "NGN",
-      redirect_url: "https://google.com",
+      redirect_url: "https://atbu.edu.ng/web/front",
       meta: {
         consumer_id: 23,
         consumer_mac: "92a3-912ba-1192a",
@@ -30,8 +34,9 @@ app.post("/api/payment", async (req, res) => {
         name: req.body.fullname,
       },
       customizations: {
-        title: "Pied Piper Payments",
-        logo: "http://www.piedpiper.com/app/themes/joystick-v27/images/logo.png",
+        title: "ID Card Request",
+        logo: "https://atbu.edu.ng/public/assets/images/atbu_logo.png",
+        description: "ID Card Processing Fee",
       },
     };
 
@@ -76,5 +81,5 @@ app.post("/api/save-data", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port ${PORT} + ${process.env.FLW_SECRET_KEY}`);
 });

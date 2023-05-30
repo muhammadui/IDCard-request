@@ -75,11 +75,10 @@ const Home = () => {
       name: fullname,
     },
     redirect_url: "https://atbu.edu.ng/web/front",
-
     customizations: {
       title: "ID Card Request",
+      logo: "https://atbu.edu.ng/public/assets/images/atbu_logo.png",
       description: "ID Card Processing Fee",
-      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
     },
   };
 
