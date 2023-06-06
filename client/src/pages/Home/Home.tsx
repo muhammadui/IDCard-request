@@ -78,7 +78,7 @@ const Home = () => {
     customizations: {
       title: "ID Card Request",
       logo: "https://atbu.edu.ng/public/assets/images/atbu_logo.png",
-      description: "ID Card Processing Fee",
+      description: "Card Processing Fee",
     },
   };
 

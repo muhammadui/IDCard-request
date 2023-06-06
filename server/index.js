@@ -3,8 +3,10 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const morgan = require("morgan");
-
+const pool = require("./DB/DB");
+const { v4: uuidv4 } = require("uuid");
 const app = express();
+
 app.use(
   cors({
     origin: process.env.ALLOWED_ORIGINS.split(","),
@@ -66,27 +68,58 @@ app.post("/api/payment", async (req, res) => {
 });
 
 // Save data endpoint
-app.post("/api/save-data", async (req, res) => {
-  try {
-    // Save user data to database
-    // ...
 
-    res.send({
-      status: "success",
-      message: "Data saved successfully",
-    });
+app.post("/api/save-data", (req, res) => {
+  try {
+    // Extract the student information from the request body
+    const { fullname, email, mobile, reg_number, faculty, department, course } =
+      req.body;
+
+    // Generate a UUID for the student
+    const id = uuidv4();
+
+    // Perform the database query to insert the student information
+    const insertQuery =
+      "INSERT INTO idcard_requests (id, fullname, email, mobile, reg_number, faculty, department, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    pool
+      .execute(insertQuery, [
+        id,
+        fullname,
+        email,
+        mobile,
+        reg_number,
+        faculty,
+        department,
+        course,
+      ])
+      .then((results) => {
+        console.log("Student information saved successfully");
+        return res.json({
+          status: "success",
+          message: "Student information saved successfully",
+        });
+      })
+      .catch((error) => {
+        console.error("Error executing database query:", error);
+        return res.status(500).json({
+          status: "error",
+          message: "Failed to save the student information",
+        });
+      });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({
+    console.error("Error saving student information:", error);
+    return res.status(500).json({
       status: "error",
-      message: error.message,
+      message: "An error occurred while saving the student information",
     });
   }
 });
+
 app.get("*", (req, res) => {
   res.render("404");
 });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT} + ${process.env.FLW_SECRET_KEY}`);
+  console.log(`Server started on port http://localhost:${PORT}`);
 });

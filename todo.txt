@@ -1,4 +1,4 @@
-- Implement Payment System
+- Implement Payment System ✅
 - Improve Code Security and readability
 
 
@@ -13,10 +13,30 @@ CREATE TABLE idcard_requests (
   fullname VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   mobile VARCHAR(20) NOT NULL,
-  reg_number VARCHAR(50) NOT NULL,
+  reg_number VARCHAR(20) NOT NULL,
   faculty VARCHAR(255) NOT NULL,
   department VARCHAR(255) NOT NULL,
-  courses TEXT NOT NULL,
+  courses VARCHAR(255) NOT NULL,
+  status ENUM('pending', 'collected') NOT NULL DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+///
+
+CREATE DATABASE school_idcard_requests;
+USE school_idcard_requests;
+
+CREATE TABLE idcard_requests (
+  id BINARY(16) PRIMARY KEY,
+  fullname VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  mobile BIGINT NOT NULL,
+  reg_number VARCHAR(20) NOT NULL,
+  faculty VARCHAR(255) NOT NULL,
+  department VARCHAR(255) NOT NULL,
+  courses VARCHAR(255) NOT NULL,
   status ENUM('pending', 'collected') NOT NULL DEFAULT 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
