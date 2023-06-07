@@ -72,15 +72,22 @@ app.post("/api/payment", async (req, res) => {
 app.post("/api/save-data", (req, res) => {
   try {
     // Extract the student information from the request body
-    const { fullname, email, mobile, reg_number, faculty, department, course } =
-      req.body;
+    const {
+      fullname,
+      email,
+      mobile,
+      reg_number,
+      faculty,
+      department,
+      courses,
+    } = req.body;
 
     // Generate a UUID for the student
     const id = uuidv4();
 
     // Perform the database query to insert the student information
     const insertQuery =
-      "INSERT INTO idcard_requests (id, fullname, email, mobile, reg_number, faculty, department, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO idcard_requests (id, fullname, email, mobile, reg_number, faculty, department, courses) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     pool
       .execute(insertQuery, [
@@ -91,7 +98,7 @@ app.post("/api/save-data", (req, res) => {
         reg_number,
         faculty,
         department,
-        course,
+        courses,
       ])
       .then((results) => {
         console.log("Student information saved successfully");
@@ -113,6 +120,96 @@ app.post("/api/save-data", (req, res) => {
       status: "error",
       message: "An error occurred while saving the student information",
     });
+  }
+});
+
+app.post("/api/process-payment", async (req, res) => {
+  try {
+    const {
+      fullname,
+      email,
+      mobile,
+      reg_number,
+      faculty,
+      department,
+      courses,
+    } = req.body;
+
+    // Generate UUIDv4 for the ID
+    const id = uuidv4();
+
+    // Set the necessary payment data
+    const paymentData = {
+      tx_ref: Date.now().toString(),
+      amount: 1500,
+      currency: "NGN",
+      redirect_url: "https://atbu.edu.ng/web/front",
+      meta: {
+        consumer_id: 23,
+        consumer_mac: "92a3-912ba-1192a",
+      },
+      customer: {
+        email: email,
+        phonenumber: mobile,
+        name: fullname,
+      },
+      customizations: {
+        title: "ID Card Request",
+        logo: "https://atbu.edu.ng/public/assets/images/atbu_logo.png",
+        description: "ID Card Processing Fee",
+      },
+    };
+
+    // Make the payment request to Flutterwave
+    const response = await axios.post(
+      "https://api.flutterwave.com/v3/payments",
+      paymentData,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
+        },
+      }
+    );
+
+    if (response.data.status === "success") {
+      const insertStudentQuery =
+        "INSERT INTO idcard_requests (id, fullname, email, mobile, reg_number, faculty, department, courses) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      await pool.query(insertStudentQuery, [
+        id,
+        fullname,
+        email,
+        mobile,
+        reg_number,
+        faculty,
+        department,
+        courses,
+      ]);
+      console.log(response);
+      return res.status(200).send(response.data);
+    }
+
+    // Save student data to the database
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({
+      status: "error",
+      message: "Payment and data saving failed",
+    });
+  }
+});
+
+app.get("/api/idcard-requests", async (req, res) => {
+  try {
+    // Fetch all ID card requests from the database
+    const idCardRequests = await pool.query("SELECT * FROM idcard_requests");
+
+    // Send the ID card requests as a response
+    console.log(idCardRequests[0]);
+
+    return res.json(idCardRequests[0]);
+  } catch (error) {
+    console.error("Error fetching ID card requests:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

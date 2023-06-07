@@ -42,7 +42,7 @@ const Home = () => {
     );
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // Check if required fields are filled
@@ -55,15 +55,40 @@ const Home = () => {
       department &&
       courses.length > 0
     ) {
-      // All required fields are filled
-      setFormSubmitted(true);
+      try {
+        // Make a POST request to the server endpoint for payment and data processing
+        const response = await axios.post(
+          "http://localhost:3000/api/process-payment",
+          {
+            fullname,
+            email,
+            mobile,
+            reg_number,
+            faculty,
+            department,
+            courses, // Assuming only one course is selected
+          }
+        );
+
+        // Check if the request was successful
+        if (response.data.status === "success") {
+          // Payment and data processing were successful
+          setFormSubmitted(true);
+        } else {
+          // Payment or data processing failed
+          console.log("Payment and data processing failed");
+        }
+      } catch (error) {
+        // Error occurred during the request
+        console.error("An error occurred during the request", error);
+      }
     } else {
       // Display an error or alert message indicating that the form fields are incomplete
       console.log("Please fill in all required fields");
     }
   };
 
-  const config = {
+  const config: any = {
     public_key: publicKey,
     tx_ref: Date.now().toString(),
     amount: amount,
@@ -83,6 +108,33 @@ const Home = () => {
   };
 
   const handleFlutterPayment = useFlutterwave(config);
+
+  // ...
+
+  const handlePaymentSuccess = async (response: any) => {
+    try {
+      // Send a POST request to the /api/save-data endpoint with the collected student information
+      const saveDataResponse = await axios.post("/api/save-data", {
+        fullname,
+        email,
+        mobile,
+        reg_number,
+        faculty,
+        department,
+        courses,
+      });
+
+      // Process the saveDataResponse as needed
+      console.log(saveDataResponse.data); // Handle the response as needed
+    } catch (error) {
+      console.error(error);
+      // Handle the error response
+    }
+
+    closePaymentModal(); // Close the payment modal
+  };
+
+  config.callback = handlePaymentSuccess;
 
   return (
     <>

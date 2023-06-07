@@ -1,9 +1,9 @@
 import Home from "./pages/Home/Home";
-
+import IDCardRequests from "./components/IDCardRequests";
 function App() {
   return (
     <>
-      <Home />
+      <IDCardRequests />
     </>
   );
 }
