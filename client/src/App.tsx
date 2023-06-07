@@ -1,11 +1,14 @@
-import Home from "./pages/Home/Home";
-import IDCardRequests from "./components/IDCardRequests";
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home, NotFound } from "./pages/pages";
+
+export default function App() {
   return (
-    <>
-      <IDCardRequests />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
