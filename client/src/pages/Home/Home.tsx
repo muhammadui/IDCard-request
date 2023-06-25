@@ -6,11 +6,9 @@ import "./Home.css";
 import facultiesData from "./faculties.json";
 import IDCard from "./IDCard.svg";
 import IDCardWithShadow from "./IDCardWithShadow.svg";
-const paymentURL = import.meta.env.VITE_PAYMENT_URL;
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 const title = import.meta.env.VITE_PAYMENT_URL;
 const amount = import.meta.env.VITE_AMOUNT;
-const description = import.meta.env.VITE_PAYMENT_URL;
 
 const Home = () => {
   const [faculty, setFaculty] = useState("");
