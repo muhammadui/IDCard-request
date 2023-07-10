@@ -86,7 +86,6 @@ select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  /* background-image: url("your-image-url-here"); */
   background-image: none;
   background-repeat: no-repeat;
   background-position: right center;
