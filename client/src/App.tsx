@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Home, Login, Dashboard, SignUp } from "./pages/pages";
 
-const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const clerkPubKey = 'pk_test_c2VsZWN0ZWQtc3RhcmxpbmctNzAuY2xlcmsuYWNjb3VudHMuZGV2JA'
 
 if (!clerkPubKey) {
   throw new Error("Missing Publishable Key");
